@@ -25,6 +25,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import laboratorio2.logica.Caja;
+import laboratorio2.logica.Logica;
+import laboratorio2.logica.Producto;
+import laboratorio2.logica.Supermercado;
 
 /**
  *
@@ -44,11 +48,29 @@ public class Interfaz extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        
+        Supermercado s = new Supermercado("a","s");
+        Logica l =new Logica();
+        l.crearInventario();
+        l.Lectura(s);
+        Caja caja = new Caja(s);
+        s.addProducto(new Producto(9650, 23.67, 56, 42, "carne"));
+        l.SobreEscribir(s);
+        
+        
+        
+        
+        
+        
                 window = primaryStage;
                 window.setTitle("Exito");
                 //window.setScene(new Scene(new Inicio()));
                 vender = new Button("Vender");
-		vender.setOnAction(e -> window.setScene(scene1));
+		vender.setOnAction(e -> {
+                    
+                    
+                    window.setScene(new Scene(new Venta(s)));
+                            });
                 
                 regresar = new Button ("regresar");
                 regresar.setOnAction(e -> window.setScene(principal));

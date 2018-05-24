@@ -62,4 +62,17 @@ public class Supermercado {
         }
         return null;
     }
+    
+        public double vproductoPorCodigo(int codigo,int c){
+            Producto ph = null;
+        for ( Producto p : this.m_inventario){
+            if (p.getCodigo() == codigo){
+                ph = p;
+            }else{
+                //System.out.println("no se encuentra producto");
+            }
+        }
+        
+        return ph.getPrecio()*c;
+    }
 }
