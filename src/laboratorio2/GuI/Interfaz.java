@@ -49,7 +49,7 @@ public class Interfaz extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         
-        Supermercado s = new Supermercado("a","s");
+        Supermercado s = new Supermercado("Exito","Cll 134");
         Logica l =new Logica();
         l.crearInventario();
         l.Lectura(s);
@@ -68,7 +68,7 @@ public class Interfaz extends Application{
                 vender = new Button("Vender");
 		vender.setOnAction(e -> {
                     
-                    
+                    Usuario.display();
                     window.setScene(new Scene(new Venta(s)));
                             });
                 

@@ -36,7 +36,7 @@ public class Venta extends Pane{
         this.setPrefSize(700, 700);
         titulo = new Label("Caja");
         titulo.setAlignment(Pos.CENTER);
-        factura= new Factura(s, 0, null, null);
+        factura= new Factura(s, 0, 0, null, null);
         
         GridPane grd = new GridPane();
         grd.setPadding(new Insets(10, 10, 10, 10));
@@ -60,10 +60,8 @@ public class Venta extends Pane{
            subcosto +=  s.vproductoPorCodigo(Integer.parseInt(txt1.getText()), Integer.parseInt(txt2.getText()));
            //subcostoF = subcostoF + subcosto1;
             System.out.println(subcosto); 
-            
-            factura = new Factura(s, Integer.parseInt(txt1.getText()), null, null);
-            
-            
+
+            factura.addProducto(Integer.parseInt(txt1.getText()), Integer.parseInt(txt2.getText()));
             
         });
         GridPane.setConstraints(button, 2, 2);
@@ -72,7 +70,9 @@ public class Venta extends Pane{
         impFactura = new Button ("imprimir factura");
         GridPane.setConstraints(impFactura, 3, 3);
         impFactura.setOnAction(e -> {
-            
+            factura.imprimir();
+            System.out.println("   Subtotal: "+ subcosto);
+            System.out.println("Costo total: "+ subcosto * 1.4);
         });
         
         

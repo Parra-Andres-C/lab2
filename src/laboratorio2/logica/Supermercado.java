@@ -16,12 +16,13 @@ import java.util.ArrayList;
 public class Supermercado {
     private String m_nombre, m_direccion;
     private ArrayList<Producto> m_inventario;
-    
+    private ArrayList<Cliente> m_clientes;
     
     public Supermercado(String nombre, String direccion) {
         this.m_nombre = nombre;
         this.m_direccion = direccion;
         this.m_inventario = new ArrayList();
+        this.m_clientes = new ArrayList();
     }
 
     public String getNombre() {
@@ -45,6 +46,9 @@ public class Supermercado {
     }
     public void addProducto(Producto p){
         this.m_inventario.add(p);
+        
+    }
+    public void addCliente(){
         
     }
     public void darInfoInventario(){

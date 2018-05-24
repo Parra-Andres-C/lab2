@@ -16,12 +16,13 @@ public class Factura {
     ArrayList<Producto> productos;
     Vendedor vendedor;
     Cliente cliente;
-    int codigo;
-    public Factura(Supermercado s, int codigo, Vendedor vendedor, Cliente cliente) {
+    int codigo, cantidad_comprada;
+    public Factura(Supermercado s, int codigo,int cc,  Vendedor vendedor, Cliente cliente) {
         this.s = s;
         this.vendedor = vendedor;
         this.cliente = cliente;
         this.productos = new ArrayList();
+        this.cantidad_comprada = cc;
     }
 
     public Supermercado getS() {
@@ -32,12 +33,16 @@ public class Factura {
         return productos;
     }
 
-    public void getProducto(int codigo){
+    public void addProducto(int codigo, int cc){
         
         
        String nombre = s.productoPorCodigo(codigo).getNombre();
        
-       double 
+       double precio = s.productoPorCodigo(codigo).getPrecio();
+       
+       int cantidad = cc;
+       Producto p = new Producto(codigo, precio, cantidad, nombre);
+       this.productos.add(p);
     }
     
     
@@ -62,6 +67,23 @@ public class Factura {
         this.cliente = cliente;
     }
     
+    public void impri(){
+        
+    }
     
+    public void imprimir(){
+        int cantotal=0;
+        System.out.println(s.getNombre() +"\n"+ s.getDireccion());
+        System.out.println("Productos comprados: nombre, codigo, cantidad, precio por unidad");
+        for (Producto p : this.productos){
+            System.out.println("\t"+p.getNombre()+" "+p.getCodigo()+" "+p.getCantidad()+" "+p.getPrecio());
+            cantotal += p.getCantidad();
+        }
+        System.out.println("Numero de articulos comprados:" + cantotal);
+        if(cliente != null){
+            System.out.println("Cliente: " + cliente.getM_nombre()+" Direccion: "+ cliente.getM_direccion());
+            System.out.println("Puntos Acumulados: "+cliente.getPuntos());
+        }
+    }
     
 }

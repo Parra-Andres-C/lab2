@@ -23,6 +23,14 @@ public class Producto {
         this.codigo = codigo;
     }
 
+    public Producto(int codigo, double precio, int cantidad, String nombre) {
+        this.cantidad = cantidad;
+        this.nombre = nombre;
+        this.codigo = codigo;
+        this.precio = precio;
+    }
+    
+
     public void setDisponible(int disponible) {
         this.disponible = disponible;
     }
