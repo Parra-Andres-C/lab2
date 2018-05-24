@@ -58,7 +58,8 @@ public class Interfaz extends Application{
         l.SobreEscribir(s);
         
         
-        
+        String nombre = null, direccion = null;
+        int telefono = 0, puntos = 0;
         
         
         
@@ -68,7 +69,7 @@ public class Interfaz extends Application{
                 vender = new Button("Vender");
 		vender.setOnAction(e -> {
                     
-                    Usuario.display();
+                    Usuario.display(nombre, direccion, telefono, puntos);
                     window.setScene(new Scene(new Venta(s)));
                             });
                 

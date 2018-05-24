@@ -5,6 +5,8 @@
  */
 package laboratorio2.GuI;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -24,7 +26,7 @@ public class Usuario {
     Cliente cl = new Cliente(null, null, 0, 0);
     
     
-    public  static void display(){
+    public  static void display(String nombre, String direccion, int telefono, int puntos){
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Validacion Usuario");
@@ -63,8 +65,12 @@ public class Usuario {
         Button ejecutar= new Button("Guardar Info");
         GridPane.setConstraints(ejecutar, 3, 6);
         
-        ejecutar.setOnAction(e -> {
-            //cl.setM_nombre(txt1.getText());
+        ejecutar.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                nombre = txt1.getText(); 
+            }
+            
         });
         
         
